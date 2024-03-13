@@ -19,23 +19,35 @@ class Circle:
         area of this circle and another circle.
         Since area is pi*r**2, the radii of the 3 circles
         should form a Pythagorean triple (r1^2 + r2^2 = r3^2)
+
+        >>> c1 = Circle(3)
+        >>> c2 = Circle(4)
+        >>> c1.add_area(c2)
+        Circle(5.0)
+        >>> c3 = Circle(-1)
+        Traceback (most recent call last):
+            ...
         """
         r1 = self.get_radius()
         r2 = circle.get_radius()
-        # this is important, so show the operation in a rounded-box
-        # on the Circle lifeline, or show it as a comment.
         r = math.hypot(r1, r2)
-        # In a sequence diagram create a name for the new circle
-        # so that you can show what is being returned.
         return Circle(r)
 
     def get_area(self) -> float:
+        """Return the area of the circle."""
         return math.pi*self.radius*self.radius
     
     def get_radius(self) -> float:
+        """Return the radius of the circle."""
         return self.radius
 
     def __str__(self) -> str:
+        """Return the string representation of the circle."""
         return f"Circle({self.radius})"
     
     __repr__ = __str__
+
+
+if __name__ == "__main__":
+    import doctest
+    doctest.testmod()
