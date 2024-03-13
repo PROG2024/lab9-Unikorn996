@@ -10,13 +10,31 @@
 """
 
 class Counter:
+    def __new__(cls):
+        """Create a single instance of the class."""
+        if not hasattr(cls, "_instance"):
+            cls._instance = super().__new__(cls)
+        return cls._instance
 
     def __init__(self):
-        self.__count = 0
-
+        """Initialize the counter to zero."""
+        if not hasattr(self, "_count"):
+            self._count = 0
 
     def __str__(self):
-        return f"{self.__count}"
+        """Return the current count as a string."""
+        return f"{self._count}"
 
-    #TODO write count property
-    #TODO write increment method
+    @property
+    def count(self):
+        """Return the current count."""
+        return self._count
+    
+    def increment(self):
+        """Increment the count by 1."""
+        self._count += 1
+        return self._count
+
+    def reset(self):
+        """Reset the count to zero."""
+        self._count = 0
