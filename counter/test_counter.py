@@ -14,6 +14,7 @@ from counter import Counter
 class TestCounter(unittest.TestCase):
       
       def setUp(self):
+         """Set up."""
          self.counter1 = Counter()
          self.counter2 = Counter()
        
